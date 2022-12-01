@@ -1,5 +1,5 @@
 // internals
-const path = require('path'); // this is a built in Node module that makes it a lot easier to manipulate and work with paths 
+const path = require('path'); 
 const express = require('express');
 
 var cors = require('cors')
@@ -19,19 +19,6 @@ app.use(cors())
 
 app.set('views', viewsPath);
 app.use(express.static(publicDirectoryPath)); 
-
-// DYNAMIC 
-app.get('', (req, res) => {
-
-})
-
-app.get('/about', (req, res) => {
-
-})
-
-app.get('/help', (req, res) => {
-})
-
 
 app.get('/weather', (req,res) => {
     if (!(req.query.address)) {
@@ -59,12 +46,9 @@ app.get('/weather', (req,res) => {
     }
 })
 
-// TO SETUP A 404 PAGE (NEEDS TO COME LAST)a
-
-app.get('*', (req, res) => { // the * means matching anything 
+app.get('*', (req, res) => { 
 })
 
-// we user 3000 here, which is fine for local development. However, if we want to push to Heroku, need to use a port they provide us with. 
 app.listen(port, () => {
     console.log('Server is up on the port ' + port + '.');
 });
